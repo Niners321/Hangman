@@ -16,10 +16,12 @@ class ChooseWord
 end
 
 class Game
+  attr_accessor :chosen_word, :guessed_word, :num_of_guesses_left
   def initialize
     @chosen_word = ChooseWord.new
     @guessed_word = "_" * @chosen_word.length
     @num_of_guesses_left = 8
+    @player_word = String.new
 
   end
 
@@ -47,14 +49,36 @@ class Game
   def play_game
     until @num_of_guesses_left == 0
 
+    end
   end
 
-  #guess prompt 
+  #initial guess prompt 
+  def initial_prompt
+    puts 'Save your game by typing the word "save".'
+    puts "You have #{num_of_guesses_left} remaining"
+  end
+
+  #guess promp in ongoing game
   def guess_prompt
+    initial_prompt
+    loop do
+      puts "Enter your guess:"
+      guess = gets.chomp.downcase
+      #check if guess is valid, if so add it to player word
+      #save game if guess = 'save'
+    
+    end
   end
 
   #check if guess is valid
   def valid_guess?
+    #check if guess is a letter
+  end
+
+  #check if guess is in @chosen_word
+  def check_guess
+    #check if guess matches any index of @chosen_word
+
   end
 
   #save current game
