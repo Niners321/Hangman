@@ -64,21 +64,20 @@ class Game
     loop do
       puts "Enter your guess:"
       guess = gets.chomp.downcase
-      #check if guess is valid, if so add it to player word
-      #save game if guess = 'save'
-    
     end
   end
 
   #check if guess is valid
-  def valid_guess?
-    #check if guess is a letter
+  def valid_guess?(guess)
+    ("a".."z").include?(guess) && !player_word.include?(guess)
   end
 
   #check if guess is in @chosen_word
-  def check_guess
-    #check if guess matches any index of @chosen_word
-
+  def check_guess(guess)
+    chosen_word.length.times do |i|
+      player_word[i] = guess if guess == chosen_word[i]
+    end
+    self.num_of_guesses_left -= 1 unless chosen_word.include?(guess)
   end
 
   #save current game
@@ -90,7 +89,8 @@ class Game
   end
 
   #check if game has been won
-  def game_won?
+  def game_won?(chosen_word, player_word)
+    chosen_word == player_word
   end
 
   #saved game menu
