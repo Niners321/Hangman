@@ -1,0 +1,5 @@
+--- !ruby/object:Game
+chosen_word: greece
+guessed_word: ______
+num_of_guesses_left: 6
+player_guesses: 'f a '
